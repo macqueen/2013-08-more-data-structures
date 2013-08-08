@@ -35,7 +35,7 @@ describe("linkedList", function() {
   it("head should be connected to tail when there is more than one node", function() {
     linkedList.addToTail('hello');
     linkedList.addToTail('goodbye');
-    expect(LinkedList.head.next.value === linkedList.tail.value).toEqual(true);
+    expect(linkedList.head.next.value === linkedList.tail.value).toEqual(true);
 
     linkedList.addToTail('why');
     expect(linkedList.head.next.next.value === linkedList.tail.value).toEqual(true);
