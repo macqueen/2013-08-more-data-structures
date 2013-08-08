@@ -40,4 +40,13 @@ describe("linkedList", function() {
     linkedList.addToTail('why');
     expect(linkedList.head.next.next.value === linkedList.tail.value).toEqual(true);
   });
+
+  it(".removeHead should remove the head", function(){
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    var a = linkedList.head;
+    linkedList.removeHead();
+    expect(linkedList.head === a).toEqual(false);
+  });
+
 });
