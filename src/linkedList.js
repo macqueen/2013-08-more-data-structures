@@ -15,12 +15,20 @@ var makeLinkedList = function(){
   };
 
   list.removeHead = function(){
-    var target = list.head.next;
-    delete list.head;
-    list.head = target;
+    var value = list.head.value;
+    list.head = list.head.next;
+    return value;
   };
 
-  list.contains = function(){
+  list.contains = function(target){
+    var currentNode = list.head;
+    while (currentNode.next !== null) {
+      if (currentNode.value === target) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
   };
 
   return list;
