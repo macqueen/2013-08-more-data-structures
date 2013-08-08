@@ -11,11 +11,15 @@ var makeLinkedList = function(){
     } else if (list.head === list.tail) {
       list.tail = makeNode(value);
       list.head.next = 'tail';
+    } else if (indexer === 0) {
+      list[indexer] = list.tail;
+      list[indexer].next = 'tail';
+      list.head.next = indexer++;
+      list.tail = makeNode(value);
     } else {
       list[indexer-1].next = list[indexer];
       list[indexer] = list.tail;
-      list[indexer].next = 'tail';
-      indexer++;
+      list[indexer++].next = 'tail';
       list.tail = makeNode(value);
     }
   };
