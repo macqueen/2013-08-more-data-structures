@@ -16,5 +16,13 @@ describe("linkedList", function() {
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
 
-  // add more tests here to test the functionality of linkedList
+  it("should have a head node when there is one list node", function() {
+    linkedList.addToTail('hello');
+    expect(linkedList.head.value).toEqual('hello');
+  });
+
+  it("tail should equal head when there is one list node", function() {
+    linkedList.addToTail('hello');
+    expect(linkedList.head.value).toEqual(linkedList.tail.value);
+  });
 });
