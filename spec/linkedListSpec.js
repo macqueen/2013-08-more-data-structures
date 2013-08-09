@@ -49,4 +49,10 @@ describe("linkedList", function() {
     expect(linkedList.head === a).toEqual(false);
   });
 
+  it("should be linked in both directions", function(){
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    expect(linkedList.head).toEqual(linkedList.tail.prev);
+  });
+
 });
