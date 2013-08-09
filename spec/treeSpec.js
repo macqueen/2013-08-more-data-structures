@@ -46,5 +46,14 @@ describe("tree", function() {
     expect(tree.children[0].children[0].children[0].parent.value).toEqual(2);
   });
 
-  // Add more tests here to test the functionality of tree.
+  it('should disconnect a child when removeFromParent is called', function() {
+    tree.addChild(1);
+    tree.children[0].addChild(2);
+    tree.children[0].addChild(3);
+    tree.children[0].addChild(4);
+    tree.children[0].children[0].removeFromParent();
+    expect(tree.contains(2)).toEqual(false);
+    expect(tree.contains(3)).toEqual(true);
+  });
+
 });
