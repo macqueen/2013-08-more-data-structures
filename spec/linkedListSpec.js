@@ -61,4 +61,14 @@ describe("linkedList", function() {
     expect(linkedList.head.next.prev).toEqual(linkedList.head);
   });
 
+  it("should be able to shed its tail", function(){
+    linkedList.addToTail(1);
+    linkedList.addToHead(0);
+    linkedList.addToTail(2);
+    expect(linkedList.removeTail()).toEqual(2);
+    expect(linkedList.contains(2)).toEqual(false);
+    expect(linkedList.tail.value).toEqual(1);
+    expect(linkedList.tail.next).toEqual(null);
+  });
+
 });
