@@ -10,6 +10,7 @@ var makeTree = function(value){
   var newTree = {};
   newTree.value = value;
   newTree.children = [];
+  newTree.parent = null;
   extend(newTree, treeMethods);
   return newTree;
 };
@@ -23,7 +24,10 @@ var extend = function(obj1, obj2){
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-  this.children.push(makeTree(value));
+  var newChild = makeTree(value);
+  newChild.parent = this;
+  this.children.push(newChild);
+  //this.children.push(makeTree(value));
 };
 
 treeMethods.contains = function(target, flag){
