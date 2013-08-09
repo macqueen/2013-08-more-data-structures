@@ -20,5 +20,22 @@ describe("tree", function() {
     expect(tree.children[0].children[0].value).toEqual('first');
   });
 
+  it('contains should return true when the target node contains the value', function() {
+    tree.value = 'first';
+    expect(tree.contains('first')).toEqual(true);
+  });
+
+  it('should find values downstream of node when contains is called', function() {
+    tree.addChild('first');
+    tree.addChild('second');
+    tree.addChild('third');
+    tree.children[0].addChild('first 1');
+    tree.children[0].addChild('first 2');
+    tree.children[1].addChild('first 2');
+    tree.children[1].children[0].addChild('first 3');
+    expect(tree.contains('first 1')).toEqual(true);
+    expect(tree.contains('first 3')).toEqual(true);
+  });
+
   // Add more tests here to test the functionality of tree.
 });
