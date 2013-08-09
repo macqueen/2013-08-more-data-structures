@@ -41,3 +41,10 @@ treeMethods.contains = function(target, flag){
   }
   return flag;
 };
+
+treeMethods.removeFromParent = function(){
+  var child = this;
+  var childPosition = child.parent.children.indexOf(child);
+  child.parent.children.splice(childPosition, 1);
+  child.parent = null;
+};
