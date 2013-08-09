@@ -19,5 +19,6 @@ makeSet.setMethods.contains = function(value){
   return false;
 };
 
-makeSet.setMethods.remove = function(){
+makeSet.setMethods.remove = function(value){
+  delete this._storage[value];
 };
