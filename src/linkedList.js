@@ -32,6 +32,16 @@ var makeLinkedList = function(){
     return false;
   };
 
+  list.addToHead = function(value){
+    if (list.head === null && list.tail === null){
+      list.head = list.tail = makeNode(value);
+    } else {
+      list.head.prev = makeNode(value);
+      list.head.prev.next = list.head;
+      list.head = list.head.prev;
+    }
+  };
+
   return list;
 };
 
