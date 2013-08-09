@@ -24,7 +24,15 @@ HashTable.prototype.insert = function(k, v){
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(i);
+  var searchArr = this._storage.get(i);
+  // what we have now is something like [[k, v][k, v]]
+  for (var j = 0; j < searchArr.length; j++){
+    if (searchArr[j][0] === k) {
+  // we're just returning the value
+      return searchArr[j][1];
+    }
+  }
+  return undefined;
 };
 
 HashTable.prototype.remove = function(k){
