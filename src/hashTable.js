@@ -1,6 +1,7 @@
 var HashTable = function(){
   this._limit = 8;
 
+
   // Use a limited array to store inserted elements.
   // It'll keep you from using too much space. Usage:
   //
@@ -14,8 +15,11 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  console.log(i);
-  this._storage.set(i, v);
+  if (this._storage.get(i) === undefined) {
+    this._storage.set(i, [[k, v]]);
+  } else {
+    this._storage.get(i).push([k, v]);
+  }
 };
 
 HashTable.prototype.retrieve = function(k){
@@ -25,7 +29,6 @@ HashTable.prototype.retrieve = function(k){
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  console.log(i);
   this._storage.set(i, undefined);
 };
 
