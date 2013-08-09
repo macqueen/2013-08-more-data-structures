@@ -42,6 +42,13 @@ var makeLinkedList = function(){
     }
   };
 
+  list.removeTail = function(){
+    var value = list.tail.value;
+    list.tail = list.tail.prev;
+    list.tail.next = null;
+    return value;
+  };
+
   return list;
 };
 
