@@ -27,7 +27,6 @@ treeMethods.addChild = function(value){
   var newChild = makeTree(value);
   newChild.parent = this;
   this.children.push(newChild);
-  //this.children.push(makeTree(value));
 };
 
 treeMethods.contains = function(target, flag){
