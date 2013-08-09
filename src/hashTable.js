@@ -37,7 +37,15 @@ HashTable.prototype.retrieve = function(k){
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.set(i, undefined);
+  var searchArr = this._storage.get(i);
+  // what we have now is something like [[k, v][k, v]]
+  for (var j = 0; j < searchArr.length; j++){
+    if (searchArr[j][0] === k) {
+  // we're just deleting the found array.
+      searchArr[j].splice(j, 1);
+    }
+  }
+  this._storage.set(i, searchArr);
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js
