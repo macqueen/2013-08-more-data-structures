@@ -11,8 +11,15 @@ describe("set", function() {
     expect(set.remove).toEqual(jasmine.any(Function));
   });
 
-  // it("should have values that were added", function() {
-  //   set.add('hello');
-  //   expect(set['hello'])
-  // });
+  it("should add values...and then contain them", function(){
+    set.add('hi');
+    expect(set.contains('hi')).toEqual(true);
+  });
+
+  it("should remove values ... and then not contain them", function(){
+    set.add('hi');
+    set.remove('hi');
+    expect(set.contains('hi')).toEqual(false);
+  });
+
 });
