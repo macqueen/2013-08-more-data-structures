@@ -51,9 +51,11 @@ describe("tree", function() {
     tree.children[0].addChild(2);
     tree.children[0].addChild(3);
     tree.children[0].addChild(4);
-    tree.children[0].children[0].removeFromParent();
+    var removedChild = tree.children[0].children[0].removeFromParent();
     expect(tree.contains(2)).toEqual(false);
     expect(tree.contains(3)).toEqual(true);
+    expect(removedChild.value).toEqual(2);
+    expect(removedChild.parent).toEqual(null);
   });
 
 });
