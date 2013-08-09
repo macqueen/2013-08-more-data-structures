@@ -37,5 +37,14 @@ describe("tree", function() {
     expect(tree.contains('first 3')).toEqual(true);
   });
 
+  it('should know who its parent is', function(){
+    tree.addChild(1);
+    tree.children[0].addChild(2);
+    tree.children[0].children[0].addChild(3);
+    expect(tree.children[0].parent).toEqual(tree);
+    expect(tree.parent).toEqual(null);
+    expect(tree.children[0].children[0].children[0].parent.value).toEqual(2);
+  });
+
   // Add more tests here to test the functionality of tree.
 });
