@@ -9,7 +9,9 @@ var makeLinkedList = function(){
     if (list.head === null && list.tail === null){
       list.head = list.tail = makeNode(value);
     } else {
-      list.tail = list.tail.next = makeNode(value);
+      list.tail.next = makeNode(value);
+      list.tail.next.prev = list.tail;
+      list.tail = list.tail.next;
     }
   };
 
@@ -37,6 +39,7 @@ var makeNode = function(value, pointer){
   var node = {};
   node.value = value;
   node.next = null;
+  node.prev = null;
 
   return node;
 };
