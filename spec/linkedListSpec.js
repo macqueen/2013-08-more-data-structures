@@ -55,4 +55,10 @@ describe("linkedList", function() {
     expect(linkedList.head).toEqual(linkedList.tail.prev);
   });
 
+  it("should be able to add to the head", function(){
+    linkedList.addToHead(1);
+    linkedList.addToHead(2);
+    expect(linkedList.head.next.prev).toEqual(linkedList.head);
+  });
+
 });
