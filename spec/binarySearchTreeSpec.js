@@ -42,7 +42,20 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.contains(13)).toEqual(false);
     expect(binarySearchTree.contains(11)).toEqual(false);
     expect(binarySearchTree.contains(25)).toEqual(true);
+  });
 
+  it("should iterate on all values", function(){
+    var results = [];
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(25);
+    binarySearchTree.depthFirstLog(function(item){
+      results.push(item.value);
+    });
+    expect(results).toEqual([10, 15, 20, 25, 7, 5, 3]);
   });
 
 });
