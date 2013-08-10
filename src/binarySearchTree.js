@@ -68,7 +68,7 @@ BinarySearchTree.prototype.depthFirstLog = function(callback) {
 
 
 
-BinarySearchTree.prototype.breadthFirstLog = function() {
+BinarySearchTree.prototype.breadthFirstLog = function(obj) {
   // first, create necessary arrays - to search and found
   // add main tree + children to search array, remove main tree and add to the found array
   var toSearch = [this];
@@ -78,7 +78,7 @@ BinarySearchTree.prototype.breadthFirstLog = function() {
     node = toSearch[0];
     node.left && toSearch.push(node.left);
     node.right && toSearch.push(node.right);
-    results.push(node.value);
+    obj ? results.push(node) : results.push(node.value);
     toSearch.splice(0, 1);
   }
   return results;
@@ -87,6 +87,14 @@ BinarySearchTree.prototype.breadthFirstLog = function() {
 BinarySearchTree.prototype.depthChecker = function() {
   // find the max and the min node
   // reset once rebalancing is achieved
-  var arr1 = this.breadthFirstLog();
-  arr1.sort()
+  //var arr1 = this.breadthFirstLog();
+  //arr1.sort();
+  var minDepth = Math.POSITIVE_INFINITY;
+  this.depthFirstLog(function(){
+    if (this.right === this.left === null && this.depth < minDepth){
+      minDepth = this.depth;
+    }
+    return minDepth;
+  });
+
 };
