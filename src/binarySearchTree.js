@@ -60,3 +60,19 @@ BinarySearchTree.prototype.depthFirstLog = function(callback) {
     this.left.depthFirstLog(callback);
   }
 };
+
+
+
+BinarySearchTree.prototype.breadthFirstLog = function() {
+  // first, create necessary arrays - to search and found
+  // add main tree + children to search array, remove main tree and add to the found array
+  var toSearch = [this];
+  // var currentNode = toSearch[0];
+  var results = [];
+  while (toSearch.length) {
+    toSearch[0].left && toSearch.push(toSearch[0].left);
+    toSearch[0].right && toSearch.push(toSearch[0].right);
+    results.push(toSearch.unshift());
+  }
+  console.log(results);
+};
