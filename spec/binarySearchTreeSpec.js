@@ -58,4 +58,14 @@ describe("binarySearchTree", function() {
     expect(results).toEqual([10, 15, 20, 25, 7, 5, 3]);
   });
 
+  it("should search breadth wise when breadthFirstLog is called", function(){
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(25);
+    expect(binarySearchTree.breadthFirstLog()).toEqual([10,7,15,5,20,3,25]);
+  });
+
 });

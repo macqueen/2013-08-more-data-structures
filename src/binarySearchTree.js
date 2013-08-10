@@ -67,12 +67,14 @@ BinarySearchTree.prototype.breadthFirstLog = function() {
   // first, create necessary arrays - to search and found
   // add main tree + children to search array, remove main tree and add to the found array
   var toSearch = [this];
-  // var currentNode = toSearch[0];
   var results = [];
-  while (toSearch.length) {
-    toSearch[0].left && toSearch.push(toSearch[0].left);
-    toSearch[0].right && toSearch.push(toSearch[0].right);
-    results.push(toSearch.unshift());
+  var node;
+  while (toSearch.length > 0) {
+    node = toSearch[0];
+    node.left && toSearch.push(node.left);
+    node.right && toSearch.push(node.right);
+    results.push(node.value);
+    toSearch.splice(0, 1);
   }
-  console.log(results);
+  return results;
 };
