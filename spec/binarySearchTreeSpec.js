@@ -90,4 +90,13 @@ describe("binarySearchTree", function() {
     binarySearchTree.insert(25);
     expect(binarySearchTree.maxDepth).toEqual(3);
   });
+
+  it("should record its maxDepth", function(){
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(25);
+    expect(binarySearchTree.minDepth).toEqual(2);
+  });
 });

@@ -11,7 +11,7 @@ var BinarySearchTree = function(value){
   this.depth = 0;
 // only the top node contains the maxDepth
   this.maxDepth = 0;
-  this.minDepth = Math.POSITIVE_INFINITY;
+  this.minDepth = 99999999999;
 
 };
 
@@ -26,6 +26,9 @@ BinarySearchTree.prototype.insert = function(value) {
         if (this.left.depth > topNode.maxDepth) {
           topNode.maxDepth = this.left.depth;
         }
+        if (this.left.depth < topNode.minDepth && this.right === null) {
+          topNode.minDepth = this.left.depth;
+        }
       } else {
         inserter.call(this.left);
       }
@@ -35,6 +38,9 @@ BinarySearchTree.prototype.insert = function(value) {
         this.right.depth = this.depth + 1;
         if (this.right.depth > topNode.maxDepth) {
           topNode.maxDepth = this.right.depth;
+        }
+        if (this.right.depth < topNode.minDepth && this.left === null) {
+          topNode.minDepth = this.right.depth;
         }
       } else {
         inserter.call(this.right);
