@@ -29,4 +29,20 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.left.left.left.value).toEqual(3);
   });
 
+  it("should let us know when it contains a value", function(){
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(25);
+    expect(binarySearchTree.contains(20)).toEqual(true);
+    expect(binarySearchTree.contains(3)).toEqual(true);
+    expect(binarySearchTree.contains(15)).toEqual(true);
+    expect(binarySearchTree.contains(13)).toEqual(false);
+    expect(binarySearchTree.contains(11)).toEqual(false);
+    expect(binarySearchTree.contains(25)).toEqual(true);
+
+  });
+
 });

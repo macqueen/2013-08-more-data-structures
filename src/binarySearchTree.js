@@ -23,14 +23,29 @@ BinarySearchTree.prototype.insert = function(value) {
       this.right.insert(value);
     }
   }
-
 };
 
 
 //contains() method, which accepts a value and returns a boolean
 // reflecting whether or not the value is contained in the tree.
-BinarySearchTree.prototype.contains = function() {
-
+BinarySearchTree.prototype.contains = function(value, bool) {
+  bool = bool || false;
+  if (this.value === value || bool === true) {
+    bool = true;
+  } else if (this.value > value) {
+    if (this.left === null) {
+      return bool;
+    } else {
+    return this.left.contains(value, bool);
+    }
+  } else if (this.value < value) {
+    if (this.right === null) {
+      return bool;
+    } else {
+    return this.right.contains(value, bool);
+    }
+  }
+  return bool;
 };
 
 
