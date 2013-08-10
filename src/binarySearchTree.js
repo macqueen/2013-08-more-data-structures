@@ -11,7 +11,6 @@ var BinarySearchTree = function(value){
   this.depth = 0;
 // only the top node contains the maxDepth
   this.maxDepth = 0;
-  this.minDepth = 99999999999;
 
 };
 
@@ -103,3 +102,11 @@ BinarySearchTree.prototype.breadthFirstLog = function(obj) {
   }
   return results;
 };
+
+// BinarySearchTree.prototype.depthChecker = function(){
+//  var nodes = this.breadthFirstLog(obj);
+//  for (var i =0; ) {
+
+//  }
+// };
+

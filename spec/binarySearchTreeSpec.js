@@ -91,7 +91,7 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.maxDepth).toEqual(3);
   });
 
-  it("should record its maxDepth", function(){
+  it("should record its minDepth", function(){
     binarySearchTree.insert(7);
     binarySearchTree.insert(5);
     binarySearchTree.insert(15);
