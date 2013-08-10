@@ -6,6 +6,9 @@ var BinarySearchTree = function(value){
   this.right = null;
   this.value = value;
 
+  //impliment depth:
+  this.depth = 0;
+
 };
 
 // insert method, which accepts a value and places in the tree in the correct position.
@@ -13,12 +16,14 @@ BinarySearchTree.prototype.insert = function(value) {
   if (this.value > value) {
     if (this.left === null){
       this.left = new BinarySearchTree(value);
+      this.left.depth = this.depth + 1;
     } else {
       this.left.insert(value);
     }
   } else if (this.value < value) {
     if (this.right === null) {
       this.right = new BinarySearchTree(value);
+      this.right.depth = this.depth + 1;
     } else {
       this.right.insert(value);
     }
@@ -77,4 +82,11 @@ BinarySearchTree.prototype.breadthFirstLog = function() {
     toSearch.splice(0, 1);
   }
   return results;
+};
+
+BinarySearchTree.prototype.depthChecker = function() {
+  // find the max and the min node
+  // reset once rebalancing is achieved
+  var arr1 = this.breadthFirstLog();
+  arr1.sort()
 };
