@@ -6,8 +6,10 @@ var BinarySearchTree = function(value){
   this.right = null;
   this.value = value;
 
-  //depth section:
+  // depth section
+  // all nodes contain their own depth
   this.depth = 0;
+// only the top node contains the maxDepth
   this.maxDepth = 0;
   this.minDepth = Math.POSITIVE_INFINITY;
 
