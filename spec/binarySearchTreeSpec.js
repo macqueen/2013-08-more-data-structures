@@ -81,4 +81,13 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.left.left.depth).toEqual(2);
   });
 
+  it("should record its maxDepth", function(){
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(25);
+    expect(binarySearchTree.maxDepth).toEqual(3);
+  });
 });

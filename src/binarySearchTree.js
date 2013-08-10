@@ -6,28 +6,40 @@ var BinarySearchTree = function(value){
   this.right = null;
   this.value = value;
 
-  //impliment depth:
+  //depth section:
   this.depth = 0;
+  this.maxDepth = 0;
+  this.minDepth = Math.POSITIVE_INFINITY;
 
 };
 
 // insert method, which accepts a value and places in the tree in the correct position.
 BinarySearchTree.prototype.insert = function(value) {
-  if (this.value > value) {
-    if (this.left === null){
-      this.left = new BinarySearchTree(value);
-      this.left.depth = this.depth + 1;
-    } else {
-      this.left.insert(value);
+  var topNode = this;
+  var inserter = function() {
+    if (this.value > value) {
+      if (this.left === null){
+        this.left = new BinarySearchTree(value);
+        this.left.depth = this.depth + 1;
+        if (this.left.depth > topNode.maxDepth) {
+          topNode.maxDepth = this.left.depth;
+        }
+      } else {
+        inserter.call(this.left);
+      }
+    } else if (this.value < value) {
+      if (this.right === null) {
+        this.right = new BinarySearchTree(value);
+        this.right.depth = this.depth + 1;
+        if (this.right.depth > topNode.maxDepth) {
+          topNode.maxDepth = this.right.depth;
+        }
+      } else {
+        inserter.call(this.right);
+      }
     }
-  } else if (this.value < value) {
-    if (this.right === null) {
-      this.right = new BinarySearchTree(value);
-      this.right.depth = this.depth + 1;
-    } else {
-      this.right.insert(value);
-    }
-  }
+  };
+  inserter.call(this);
 };
 
 
@@ -82,19 +94,4 @@ BinarySearchTree.prototype.breadthFirstLog = function(obj) {
     toSearch.splice(0, 1);
   }
   return results;
-};
-
-BinarySearchTree.prototype.depthChecker = function() {
-  // find the max and the min node
-  // reset once rebalancing is achieved
-  //var arr1 = this.breadthFirstLog();
-  //arr1.sort();
-  var minDepth = Math.POSITIVE_INFINITY;
-  this.depthFirstLog(function(){
-    if (this.right === this.left === null && this.depth < minDepth){
-      minDepth = this.depth;
-    }
-    return minDepth;
-  });
-
 };
