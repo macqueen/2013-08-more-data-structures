@@ -1,11 +1,4 @@
 
-// .children property, an array containing a number of subtrees
-// .addChild() method, takes any value, sets that as the target of a node,
-  //and adds that node as a child of the tree
-// A .contains() method, takes any input and returns a boolean reflecting
-  //whether it can be found as the value of the target node
-
-
 var makeTree = function(value){
   var newTree = {};
   newTree.value = value;
@@ -29,22 +22,15 @@ treeMethods.addChild = function(value){
   this.children.push(newChild);
 };
 
-treeMethods.contains = function(target, flag){
-  flag = flag || false;
-  if (this.value === target || flag === true) {
-    flag = true;
-  } else {
-    for (var i = 0; i < this.children.length; i++) {
-      flag = this.children[i].contains(target, flag);
-    }
-  }
-  return flag;
+treeMethods.contains = function(target){
+  return _.reduce(this.children, function(memo, child){
+    return memo || child.contains(target);
+  }, this.value === target);
 };
 
 treeMethods.removeFromParent = function(){
-  var child = this;
-  var childPosition = child.parent.children.indexOf(child);
-  child.parent.children.splice(childPosition, 1);
-  child.parent = null;
-  return child;
+  var childPosition = this.parent.children.indexOf(this);
+  this.parent.children.splice(childPosition, 1);
+  this.parent = null;
+  return this;
 };

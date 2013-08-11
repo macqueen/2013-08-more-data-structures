@@ -1,4 +1,4 @@
-// Note: don't use an array to do this.
+
 var makeLinkedList = function(){
   var list = {};
   list.head = null;
