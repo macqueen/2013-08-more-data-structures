@@ -71,4 +71,12 @@ describe("linkedList", function() {
     expect(linkedList.tail.next).toEqual(null);
   });
 
+  it("should return true when it contains a value and false when it doesn't", function(){
+    linkedList.addToTail(1);
+    linkedList.addToHead(0);
+    linkedList.addToTail(2);
+    expect(linkedList.contains(2)).toEqual(true);
+    expect(linkedList.contains(4)).toEqual(false);
+  });
+
 });

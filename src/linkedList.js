@@ -6,7 +6,7 @@ var makeLinkedList = function(){
   var indexer = 0;
 
   list.addToTail = function(value){
-    if (list.head === null && list.tail === null){
+    if (list.head === null){
       list.head = list.tail = makeNode(value);
     } else {
       list.tail.next = makeNode(value);
@@ -18,22 +18,16 @@ var makeLinkedList = function(){
   list.removeHead = function(){
     var value = list.head.value;
     list.head = list.head.next;
+    list.head.prev = null;
     return value;
   };
 
   list.contains = function(target){
-    var currentNode = list.head;
-    while (currentNode.next !== null) {
-      if (currentNode.value === target) {
-        return true;
-      }
-      currentNode = currentNode.next;
-    }
-    return false;
+    return list.head.contains(target);
   };
 
   list.addToHead = function(value){
-    if (list.head === null && list.tail === null){
+    if (list.head === null){
       list.head = list.tail = makeNode(value);
     } else {
       list.head.prev = makeNode(value);
@@ -52,11 +46,14 @@ var makeLinkedList = function(){
   return list;
 };
 
-var makeNode = function(value, pointer){
+var makeNode = function(value){
   var node = {};
   node.value = value;
   node.next = null;
   node.prev = null;
+  node.contains = function(target) {
+    return (this.value === target) || ( (!!this.next) && this.next.contains(target) ) ;
+  };
 
   return node;
 };
